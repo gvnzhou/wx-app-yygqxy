@@ -1,0 +1,10 @@
+<!--pages/detail/detail.wxml-->
+<view class="container">
+  <view>
+    <text>歌曲：阿斯达撒</text>  
+    <text>歌手：萨达</text>  
+  </view>
+  <view>
+    <text>有相聚 有分离</text>
+  </view>
+</view>

@@ -2,29 +2,36 @@
 <view class="container">
   <view class="search">
     <input class="search-input" placeholder="请输入粤语歌曲" auto-focus/>
-    <button type="primary" class="search-btn">搜索</button>
+    <button class="search-btn">搜索</button>
+  </view>
+  <view class="menu-tab">
+    <view>
+      <text>热门歌曲</text>
+    </view>
   </view>
   <view class="song-list">
-    <view class="item">
-      <text>易燃易爆炸</text><text class="singer">华晨宇</text>
-    </view>
-    <view class="item">
-      <text>易燃易爆炸</text><text class="singer">华晨宇</text>
-    </view>
-    <view class="item">
-      <text>易燃易爆炸</text><text class="singer">华晨宇</text>
-    </view>
-    <view class="item">
-      <text>易燃易爆炸</text><text class="singer">华晨宇</text>
-    </view>
-    <view class="item">
-      <text>易燃易爆炸</text><text class="singer">华晨宇</text>
-    </view>
-    <view class="item">
-      <text>易燃易爆炸</text><text class="singer">华晨宇</text>
-    </view>
+    <navigator url="/pages/detail/detail?id=111" class="item" hover-class="navigator-hover">
+      <view>
+        <text>易燃易爆炸</text><text class="singer">华晨宇</text>
+      </view>
+    </navigator>
+    <navigator url="/pages/detail/detail?id=111" class="item" hover-class="navigator-hover">
+      <view>
+        <text>易燃易爆炸</text><text class="singer">华晨宇</text>
+      </view>
+    </navigator>
+    <navigator url="/pages/detail/detail?id=111" class="item" hover-class="navigator-hover">
+      <view>
+        <text>易燃易爆炸</text><text class="singer">华晨宇</text>
+      </view>
+    </navigator>
+    <navigator url="/pages/detail/detail?id=111" class="item" hover-class="navigator-hover">
+      <view>
+        <text>易燃易爆炸</text><text class="singer">华晨宇</text>
+      </view>
+    </navigator>
   </view>
-  <view class="">
-    <button>反馈</button>
+  <view class="feedback">
+    <button class="feedback-btn">反馈</button>
   </view>
 </view>
