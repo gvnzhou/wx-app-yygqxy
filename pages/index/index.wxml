@@ -10,24 +10,9 @@
     </view>
   </view>
   <view class="song-list">
-    <navigator url="/pages/detail/detail?id=111" class="item" hover-class="navigator-hover">
+    <navigator wx:for="{{hotSongList}}" wx:key="{{item._id}}" url="/pages/detail/detail?id={{item._id}}" class="item" hover-class="navigator-hover">
       <view>
-        <text>易燃易爆炸</text><text class="singer">华晨宇</text>
-      </view>
-    </navigator>
-    <navigator url="/pages/detail/detail?id=111" class="item" hover-class="navigator-hover">
-      <view>
-        <text>易燃易爆炸</text><text class="singer">华晨宇</text>
-      </view>
-    </navigator>
-    <navigator url="/pages/detail/detail?id=111" class="item" hover-class="navigator-hover">
-      <view>
-        <text>易燃易爆炸</text><text class="singer">华晨宇</text>
-      </view>
-    </navigator>
-    <navigator url="/pages/detail/detail?id=111" class="item" hover-class="navigator-hover">
-      <view>
-        <text>易燃易爆炸</text><text class="singer">华晨宇</text>
+        <text>{{item.name}}</text><text class="singer">{{item.singer}}</text>
       </view>
     </navigator>
   </view>
