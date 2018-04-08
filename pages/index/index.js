@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+    keyword: '',
     hotSongList: []
   },
   //事件处理函数
@@ -16,8 +17,8 @@ Page({
     // 获取热门歌曲
     this.getHotSongList()
   },
-  getHotSongList: function(e) {
-    let _this = this;
+  getHotSongList: function() {
+    let _this = this
     wx.request({
       url: app.globalData.serverUrl + '/song?limit=20',
       success: function(res) {
@@ -25,6 +26,22 @@ Page({
           hotSongList: res.data.data
         })
       }
+    })
+  },
+  searchSong: function(e) {
+    let _this = this
+    wx.request({
+      url: app.globalData.serverUrl + '/song?keyword=' + _this.data.keyword,
+      success: function (res) {
+        _this.setData({
+          hotSongList: res.data.data
+        })
+      }
+    })
+  },
+  bindKeywordInput: function(e) {
+    this.setData({
+      keyword: e.detail.value
     })
   }
 })

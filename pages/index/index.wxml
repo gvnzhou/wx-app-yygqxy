@@ -1,8 +1,8 @@
 <!--index.wxml-->
 <view class="container">
   <view class="search">
-    <input class="search-input" placeholder="请输入粤语歌曲" auto-focus/>
-    <button class="search-btn">搜索</button>
+    <input class="search-input" bindinput="bindKeywordInput" placeholder="请输入粤语歌曲" auto-focus/>
+    <button class="search-btn" bindtap="searchSong">搜索</button>
   </view>
   <view class="menu-tab">
     <view>
