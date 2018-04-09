@@ -1,18 +1,21 @@
 // pages/detail/detail.js
+const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    songDetail: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    // 获取详情
+    this.getSongDetail(options.id)
   },
 
   /**
@@ -62,5 +65,18 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  getSongDetail: function (id) {
+    let _this = this
+    wx.request({
+      url: app.globalData.serverUrl + '/song/' + id,
+      success: function (res) {
+        // TODO: 处理歌词
+        _this.setData({
+          songDetail: res.data.data[0]
+        })
+      }
+    })
   }
 })

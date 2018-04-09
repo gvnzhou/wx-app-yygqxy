@@ -1,10 +1,12 @@
 <!--pages/detail/detail.wxml-->
 <view class="container">
   <view>
-    <text>歌曲：阿斯达撒</text>  
-    <text>歌手：萨达</text>  
+    <text>歌曲：{{songDetail.name}}</text>  
   </view>
   <view>
-    <text>有相聚 有分离</text>
+    <text>歌手：{{songDetail.singer}}</text>  
+  </view>
+  <view>
+    <text>{{songDetail.content}}</text>
   </view>
 </view>
