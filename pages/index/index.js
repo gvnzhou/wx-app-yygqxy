@@ -1,11 +1,14 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+// TODO: 搜索提示框
+// TODO: 热门歌曲异步加载
+// TODO: 记录热门歌曲
 Page({
   data: {
+    isSearch: false,
     keyword: '',
-    hotSongList: []
+    songList: []
   },
   //事件处理函数
   bindViewTap: function() {
@@ -14,27 +17,26 @@ Page({
     })
   },
   onLoad: function () {
-    // 获取热门歌曲
-    this.getHotSongList()
+    this.getSongList()
   },
-  getHotSongList: function() {
+  getSongList: function(e) {
     let _this = this
+    let reqUrl
+    if (!e) {
+      // 默认
+      reqUrl = app.globalData.serverUrl + '/song?limit=20'
+    } else if (e) {
+      // 搜索
+      this.setData({
+        isSearch: true
+      })
+      reqUrl = app.globalData.serverUrl + '/song?keyword=' + _this.data.keyword
+    }
     wx.request({
-      url: app.globalData.serverUrl + '/song?limit=20',
+      url: reqUrl,
       success: function(res) {
         _this.setData({
-          hotSongList: res.data.data
-        })
-      }
-    })
-  },
-  searchSong: function(e) {
-    let _this = this
-    wx.request({
-      url: app.globalData.serverUrl + '/song?keyword=' + _this.data.keyword,
-      success: function (res) {
-        _this.setData({
-          hotSongList: res.data.data
+          songList: res.data.data
         })
       }
     })
