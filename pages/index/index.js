@@ -4,6 +4,7 @@ const app = getApp()
 // TODO: 搜索提示框
 // TODO: 热门歌曲异步加载
 // TODO: 记录热门歌曲
+// TODO: 反馈
 Page({
   data: {
     isSearch: false,
@@ -22,8 +23,11 @@ Page({
   getSongList: function(e) {
     let _this = this
     let reqUrl
-    if (!e) {
+    if (!e || this.data.keyword.length === 0) {
       // 默认
+      this.setData({
+        isSearch: false
+      })
       reqUrl = app.globalData.serverUrl + '/song?limit=20'
     } else if (e) {
       // 搜索

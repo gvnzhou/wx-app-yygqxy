@@ -1,12 +1,12 @@
 <!--pages/detail/detail.wxml-->
 <view class="container">
   <view>
-    <text>歌曲：{{songDetail.name}}</text>  
+    <text>{{songDetail.name}}</text>  
   </view>
   <view>
-    <text>歌手：{{songDetail.singer}}</text>  
+    <text class="singer">歌手：{{songDetail.singer}}</text>  
   </view>
   <view>
-    <text>{{songDetail.content}}</text>
+    <text class="content">{{songDetail.content}}</text>
   </view>
 </view>

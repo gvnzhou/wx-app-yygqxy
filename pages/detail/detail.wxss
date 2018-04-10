@@ -1,1 +1,10 @@
 /* pages/detail/detail.wxss */
+.container {
+  padding: 0 15px;
+}
+.singer {
+  font-size: 14px;
+}
+.content {
+  font-size: 14px;
+}

@@ -73,6 +73,7 @@ Page({
       url: app.globalData.serverUrl + '/song/' + id,
       success: function (res) {
         // TODO: 处理歌词
+        res.data.data[0].content = res.data.data[0].content.replace(/\|/g, '\n')
         _this.setData({
           songDetail: res.data.data[0]
         })
