@@ -7,9 +7,12 @@ const app = getApp()
 // TODO: 反馈
 Page({
   data: {
+    isShowModal: false,
     isSearch: false,
     keyword: '',
-    songList: []
+    songList: [],
+    suggest: '',
+    contact: ''
   },
   //事件处理函数
   bindViewTap: function() {
@@ -49,5 +52,19 @@ Page({
     this.setData({
       keyword: e.detail.value
     })
+  },
+  changeFeedbackModal: function(e) {
+    if (!e.target.dataset.hasOwnProperty('isShow')) return
+    this.setData({
+      isShowModal: !!+e.target.dataset.isShow
+    })
+  },
+  bindValueInput: function(e) {
+    this.setData({
+      [e.target.dataset.name]: e.detail.value
+    })
+  },
+  submitFeedback: function(e) {
+    // 反馈接口
   }
 })

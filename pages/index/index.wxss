@@ -9,7 +9,7 @@
   border-bottom: 1px solid #ccc;
   background-color: #fff;
 }
-.search-input {
+.search .search-input {
   box-sizing: border-box;
   display: inline-block;
   padding: 0 10px;  
@@ -21,7 +21,7 @@
   text-align: left;
   background-color: #eee;
 }
-.search-btn {
+.search .search-btn {
   display: inline-block;
   padding: 0 25px;  
   height: 35px;
@@ -32,7 +32,7 @@
   color: #000;
   background-color: #ffd200;
 }
-.search-btn::after { 
+.search .search-btn::after { 
   border: none; 
 }
 .menu-tab {
@@ -61,10 +61,41 @@
   float: right;
 }
 .feedback {
-  position: fixed;
-  top: 50%;
-  right: 0;
+  margin: 10px 0;
+  /* position: fixed;
+  top: 45%;
+  right: 0; */
 }
-.feedback-btn {
-  /* background: transparent; */
+.feedback .feedback-btn {
+   padding: 0 30px; 
+   font-size: 14px; 
+}
+.modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .7);
+  z-index: 9;
+}
+.modal .form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px;
+  font-size: 16px;
+  background: #fff;
+  border-radius: 5px;
+}
+.modal .form .suggest, .modal .form .contact {
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.modal .form .suggest {
+  padding: 10px;
+  height: 100px;
+}
+.modal .form .contact {
+  padding: 5px 10px;
 }
