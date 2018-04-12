@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <view class="search">
-    <input class="search-input" bindinput="bindKeywordInput" placeholder="请输入粤语歌曲" auto-focus/>
+    <input class="search-input" data-name="keyword" bindinput="bindValueInput" placeholder="请输入粤语歌曲" auto-focus/>
     <button class="search-btn" bindtap="getSongList">搜索</button>
   </view>
   <view class="menu-tab">
@@ -24,7 +24,7 @@
     <view class="form">
       <textarea class="suggest" data-name="suggest" bindinput="bindValueInput" placeholder="说点什么吧" auto-focus />
       <input class="contact" data-name="contact" bindinput="bindValueInput" placeholder="联系方式" />
-      <button class="submit-btn" bindTap="submitFeedback">提交</button>
+      <button class="submit-btn" catchtap="submitFeedback">提交</button>
     </view>
   </view>
 </view>

@@ -61,12 +61,14 @@
   float: right;
 }
 .feedback {
-  margin: 10px 0;
-  /* position: fixed;
-  top: 45%;
-  right: 0; */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 0;
+  background-color: #eee;
 }
 .feedback .feedback-btn {
+   width: 150px;
    padding: 0 30px; 
    font-size: 14px; 
 }
