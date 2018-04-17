@@ -3,6 +3,9 @@
   <view class="search">
     <input class="search-input" data-name="keyword" bindinput="bindValueInput" placeholder="请输入粤语歌曲" auto-focus/>
     <button class="search-btn" bindtap="getSongList">搜索</button>
+    <view>
+      搜索提示框
+    </view>
   </view>
   <view class="menu-tab">
     <view>
