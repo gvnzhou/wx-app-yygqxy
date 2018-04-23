@@ -1,10 +1,14 @@
 /* pages/detail/detail.wxss */
 .container {
   padding: 0 15px;
+  text-align: center;
 }
 .singer {
+  margin-top: 5px;
   font-size: 14px;
 }
 .content {
+  margin-top: 10px;
   font-size: 14px;
+  line-height: 24px;
 }

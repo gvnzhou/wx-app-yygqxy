@@ -3,6 +3,7 @@ App({
   onLaunch: function () {
   },
   globalData: {
-    serverUrl: 'http://127.0.0.1:5000/api'
+    // serverUrl: 'https://wx.javion.cn/api'
+    serverUrl: 'http://localhost:5000/api'
   }
 })
