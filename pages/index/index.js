@@ -5,6 +5,7 @@ const app = getApp()
 // TODO: 热门歌曲异步加载
 // TODO: 记录热门歌曲
 // TODO: 反馈
+// TODO: 搜索无结果，展示优化
 Page({
   data: {
     isShowModal: false,
