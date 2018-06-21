@@ -2,14 +2,20 @@
 .container {
   background-color: #eee;
 }
+.update-time {
+  font-size: 12px;
+  text-align: center;
+  color: #999;
+  background: #fff;
+}
 .search {
   width: 100%;
-  padding: 40px 0;  
+  padding: 14px 0;  
   text-align: center;
-  border-bottom: 1px solid #ccc;
   background-color: #fff;
 }
 .search .search-input {
+  vertical-align: top;
   box-sizing: border-box;
   display: inline-block;
   padding: 0 10px;  
@@ -22,6 +28,7 @@
   background-color: #eee;
 }
 .search .search-btn {
+  vertical-align: top;
   display: inline-block;
   padding: 0 25px;  
   height: 35px;
@@ -61,14 +68,14 @@
   float: right;
 }
 .feedback {
-  position: fixed;
-  bottom: 0;
+  /* position: fixed;
+  bottom: 0;  */
   width: 100%;
-  padding: 10px 0;
-  background-color: #eee;
+  padding: 6px 0;
+  background-color: #eee;  
 }
 .feedback .feedback-btn {
-   width: 150px;
+   width: 120px;
    padding: 0 30px; 
    font-size: 14px; 
 }

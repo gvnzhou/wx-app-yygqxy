@@ -1,11 +1,14 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="search">
-    <input class="search-input" data-name="keyword" bindinput="bindValueInput" placeholder="请输入粤语歌曲" auto-focus/>
-    <button class="search-btn" bindtap="getSongList">搜索</button>
+  <view class="search" bindtap="goSearchPage" >
+    <input class="search-input" placeholder="请输入歌曲名" />
+    <button class="search-btn">搜索</button>
     <!-- <view>
       搜索提示框
     </view> -->
+  </view>
+  <view class="update-time">
+    <p>歌曲数据更新于2018-06-20 18:12</p>
   </view>
   <view class="menu-tab">
     <view>

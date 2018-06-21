@@ -1,10 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-// TODO: 搜索提示框
-// TODO: 热门歌曲异步加载
-// TODO: 记录热门歌曲
-// TODO: 反馈
+// TODO: 搜索历史
 Page({
   data: {
     isShowModal: false,
@@ -22,6 +19,11 @@ Page({
   },
   onLoad: function () {
     this.getSongList()
+  },
+  goSearchPage: function (e) {
+    wx.navigateTo({
+      url: '/pages/search/search'
+    })
   },
   // input数据绑定
   bindValueInput: function (e) {
