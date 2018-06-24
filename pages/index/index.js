@@ -1,11 +1,9 @@
 //index.js
 //获取应用实例
 const app = getApp()
-// TODO: 搜索历史
 Page({
   data: {
     isShowModal: false,
-    isSearch: false,
     keyword: '',
     songList: [],
     suggest: '',
@@ -25,28 +23,10 @@ Page({
       url: '/pages/search/search'
     })
   },
-  // input数据绑定
-  bindValueInput: function (e) {
-    this.setData({
-      [e.target.dataset.name]: e.detail.value
-    })
-  },
-  getSongList: function(e) {
+  getSongList: function() {
     let _this = this
-    let reqUrl
-    if (!e || this.data.keyword.length === 0) {
-      // 默认
-      this.setData({
-        isSearch: false
-      })
-      reqUrl = app.globalData.serverUrl + '/song?limit=20'
-    } else if (e) {
-      // 搜索
-      this.setData({
-        isSearch: true
-      })
-      reqUrl = app.globalData.serverUrl + '/song?keyword=' + _this.data.keyword
-    }
+    let reqUrl = app.globalData.serverUrl + '/song?limit=20'
+
     wx.request({
       url: reqUrl,
       success: function(res) {

@@ -11,10 +11,7 @@
     <p>歌曲数据更新于2018-06-20 18:12</p>
   </view>
   <view class="menu-tab">
-    <view>
-      <text wx:if="{{!isSearch}}">热门歌曲</text>
-      <text wx:else>搜索结果</text>
-    </view>
+    <text>热门歌曲</text>
   </view>
   <view class="song-list">
     <navigator wx:for="{{songList}}" wx:key="{{item._id}}" url="/pages/detail/detail?id={{item._id}}" class="item" hover-class="navigator-hover">

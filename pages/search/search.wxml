@@ -1,28 +1,24 @@
 <!--pages/search/search.wxml-->
 <view class="search">
-  <input class="search-input" data-name="keyword" bindinput="bindValueInput" placeholder="请输入歌曲名" />
+  <input class="search-input" data-name="keyword" bindinput="bindValueInput" placeholder="请输入歌曲名" auto-focus />
   <button class="search-btn" bindtap="getSongList">搜索</button>   
 </view>
 
-<view class="search-history">
+<view class="search-history" wx:if="{{historySearch.length > 0 && songList.length === 0}}">
   <text class="title">搜索历史</text>
   <view class="history-list">
-    <view class="item">
-      <icon type="waiting" size="18" color="#eee" class="wating-icon" /><text class="name">浮夸</text><icon type="clear" size="18" color="#eee" class="clear-icon" />
-    </view>
-    <view class="item">
-      <icon type="waiting" size="18" color="#eee" class="wating-icon" /><text class="name">浮夸</text><icon type="clear" size="18" color="#eee" class="clear-icon" />
-    </view>
-    <view class="item">
-      <icon type="waiting" size="18" color="#eee" class="wating-icon" /><text class="name">浮夸</text><icon type="clear" size="18" color="#eee" class="clear-icon" />
-    </view>
-    <view class="item">
-      <icon type="waiting" size="18" color="#eee" class="wating-icon" /><text class="name">浮夸</text><icon type="clear" size="18" color="#eee" class="clear-icon" />
-    </view>
-    <view class="item">
-      <icon type="waiting" size="18" color="#eee" class="wating-icon" /><text class="name">浮夸</text><icon type="clear" size="18" color="#eee" class="clear-icon" />
+    <view class="item" wx:for="{{historySearch}}" wx:key="{{item}}" data-keyword="{{item}}" bindtap="searchHistoryKeyword">
+      <icon type="waiting" size="18" color="#eee" class="waiting-icon" /><text class="name">{{item}}</text><icon type="clear" size="18" color="#eee" class="clear-icon" data-keyword="{{item}}" catchtap="deleteHistoryRecord"/>
     </view>
   </view>
-  <text class="clear-history">删除搜索记录</text>
+  <button class="clear-history" bindtap="clearHistorySearch">删除搜索记录</button>
+</view>
+
+<view class="song-list" wx-if="{{songList.length > 0}}">
+  <navigator wx:for="{{songList}}" wx:key="{{item._id}}" url="/pages/detail/detail?id={{item._id}}" class="item" hover-class="navigator-hover">
+    <view>
+      <text>{{item.name}}</text><text class="singer">{{item.singer}}</text>
+    </view>
+  </navigator>
 </view>
 
