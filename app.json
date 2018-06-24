@@ -3,12 +3,13 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/detail/detail",
-    "components/feedback/feedback"
+    "components/feedback/feedback",
+    "pages/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "粤语歌曲谐音",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "#fff"
   }
 }

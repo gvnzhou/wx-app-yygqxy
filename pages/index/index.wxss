@@ -2,73 +2,30 @@
 .container {
   background-color: #eee;
 }
-.search {
-  width: 100%;
-  padding: 40px 0;  
+.update-time {
+  font-size: 12px;
   text-align: center;
-  border-bottom: 1px solid #ccc;
-  background-color: #fff;
-}
-.search .search-input {
-  box-sizing: border-box;
-  display: inline-block;
-  padding: 0 10px;  
-  height: 35px;
-  line-height: 35px;
-  border-bottom-left-radius: 5px;
-  border-top-left-radius: 5px;
-  font-size: 14px;
-  text-align: left;
-  background-color: #eee;
-}
-.search .search-btn {
-  display: inline-block;
-  padding: 0 25px;  
-  height: 35px;
-  line-height: 35px;
-  border-bottom-left-radius: 0px;
-  border-top-left-radius: 0px;
-  font-size: 14px;
-  color: #000;
-  background-color: #ffd200;
-}
-.search .search-btn::after { 
-  border: none; 
+  color: #999;
+  background: #fff;
 }
 .menu-tab {
   margin-top: 30rpx;
-  padding: 10px;
+  padding: 10px 0;
   width: 100%;  
   font-size: 14px;
   text-align: center;
   border: 1px solid #eee;  
   background-color: #fff;
 }
-.song-list {
-  box-sizing: border-box;
-  height: 100%;
-  width: 100%;
-  background-color: #fff;
-}
-.song-list .item {
-  padding: 40rpx;
-  font-size: 14px;
-}
-.song-list .item + .item {
-  border-top: 1px solid #eee;
-}
-.song-list .item .singer {
-  float: right;
-}
 .feedback {
-  position: fixed;
-  bottom: 0;
+  /* position: fixed;
+  bottom: 0;  */
   width: 100%;
-  padding: 10px 0;
-  background-color: #eee;
+  padding: 6px 0;
+  background-color: #eee;  
 }
 .feedback .feedback-btn {
-   width: 150px;
+   width: 120px;
    padding: 0 30px; 
    font-size: 14px; 
 }

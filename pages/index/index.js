@@ -1,15 +1,9 @@
 //index.js
 //获取应用实例
 const app = getApp()
-// TODO: 搜索提示框
-// TODO: 热门歌曲异步加载
-// TODO: 记录热门歌曲
-// TODO: 反馈
-// TODO: 搜索无结果，展示优化
 Page({
   data: {
     isShowModal: false,
-    isSearch: false,
     keyword: '',
     songList: [],
     suggest: '',
@@ -24,28 +18,15 @@ Page({
   onLoad: function () {
     this.getSongList()
   },
-  // input数据绑定
-  bindValueInput: function (e) {
-    this.setData({
-      [e.target.dataset.name]: e.detail.value
+  goSearchPage: function (e) {
+    wx.navigateTo({
+      url: '/pages/search/search'
     })
   },
-  getSongList: function(e) {
+  getSongList: function() {
     let _this = this
-    let reqUrl
-    if (!e || this.data.keyword.length === 0) {
-      // 默认
-      this.setData({
-        isSearch: false
-      })
-      reqUrl = app.globalData.serverUrl + '/song?limit=20'
-    } else if (e) {
-      // 搜索
-      this.setData({
-        isSearch: true
-      })
-      reqUrl = app.globalData.serverUrl + '/song?keyword=' + _this.data.keyword
-    }
+    let reqUrl = app.globalData.serverUrl + '/song?limit=20'
+
     wx.request({
       url: reqUrl,
       success: function(res) {
