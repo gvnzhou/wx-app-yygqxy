@@ -12,7 +12,7 @@
 - [ ] 优化搜索加载中 
 - [ ] 输入完成后立即搜索 
 
-# 更新记录
+## 更新记录
 
 <!-- 2018.6.25 更新日志（0.1.3）
 1.优化无搜索结果展示 
@@ -21,7 +21,7 @@
 
 ## 扫一扫小程序码查看效果
 
-![avatar](http://baidu.com/pic/doge.png)
+![avatar](https://raw.githubusercontent.com/javion25/wx-app-yygqxy/dev/qrcode.jpg)
 
 
 
