@@ -14,6 +14,14 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+// input数据绑定
+const bindValueInput = function (e) {
+  this.setData({
+    [e.target.dataset.name]: e.detail.value
+  })
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  bindValueInput: bindValueInput
 }

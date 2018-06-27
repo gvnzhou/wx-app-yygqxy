@@ -1,10 +1,10 @@
 <!--pages/search/search.wxml-->
 <view class="search">
-  <input class="search-input" data-name="keyword" bindinput="bindValueInput" placeholder="请输入歌曲名" auto-focus />
+  <input class="search-input" value="{{ keyword }}" data-name="keyword" bindinput="bindValueInput" placeholder="请输入歌曲名" auto-focus />
   <button class="search-btn" bindtap="getSongList">搜索</button>   
 </view>
 
-<view class="search-history" wx:if="{{historySearch.length > 0 && songList.length === 0}}">
+<view class="search-history" wx:if="{{historySearch.length > 0 && !isRequested}}">
   <text class="title">搜索历史</text>
   <view class="history-list">
     <view class="item" wx:for="{{historySearch}}" wx:key="{{item}}" data-keyword="{{item}}" bindtap="searchHistoryKeyword">
@@ -12,6 +12,10 @@
     </view>
   </view>
   <button class="clear-history" bindtap="clearHistorySearch">删除搜索记录</button>
+</view>
+
+<view class="no-result" wx-if="{{songList.length === 0 && isRequested}}">
+  <text>暂无搜索结果，可以向我们反馈歌曲名哦</text>
 </view>
 
 <view class="song-list" wx-if="{{songList.length > 0}}">

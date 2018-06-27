@@ -1,4 +1,5 @@
 // pages/search/search.js
+const util = require('../../utils/util.js')
 //获取应用实例
 const app = getApp()
 Page({
@@ -9,7 +10,8 @@ Page({
   data: {
     keyword: '',
     historySearch: ['喜帖街','红玫瑰','浮夸'],
-    songList: []
+    songList: [],
+    isRequested: false
   },
 
   /**
@@ -27,61 +29,9 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  },
-
   // input数据绑定
-  bindValueInput: function (e) {
-    this.setData({
-      [e.target.dataset.name]: e.detail.value
-    })
-  },
+  bindValueInput: util.bindValueInput,
+
   // 获取搜索结果
   getSongList: function () {
     let self = this
@@ -114,7 +64,8 @@ Page({
       url: reqUrl,
       success: function (res) {
         _this.setData({
-          songList: res.data.data
+          songList: res.data.data,
+          isRequested: true
         })
       }
     })
@@ -129,6 +80,7 @@ Page({
       historySearch: []
     })
   },
+  // 通过历史关键词搜索
   searchHistoryKeyword: function (event) {
     this.setData({
       keyword: event.currentTarget.dataset.keyword
