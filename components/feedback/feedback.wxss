@@ -1,1 +1,43 @@
 /* components/feedback/feedback.wxss */
+.feedback {
+  /* position: fixed;
+  bottom: 0;  */
+  width: 100%;
+  padding: 6px 0;
+  background-color: #eee;  
+}
+.feedback .feedback-btn {
+   width: 120px;
+   padding: 0 30px; 
+   font-size: 14px; 
+}
+.modal {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .7);
+  z-index: 9;
+}
+.modal .form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px;
+  font-size: 16px;
+  background: #fff;
+  border-radius: 5px;
+}
+.modal .form .suggest, .modal .form .contact {
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.modal .form .suggest {
+  padding: 10px;
+  height: 100px;
+}
+.modal .form .contact {
+  padding: 5px 10px;
+}

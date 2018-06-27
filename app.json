@@ -3,7 +3,6 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/detail/detail",
-    "components/feedback/feedback",
     "pages/search/search"
   ],
   "window": {

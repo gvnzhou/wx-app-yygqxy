@@ -20,14 +20,5 @@
       </view>
     </navigator>
   </view>
-  <view class="feedback">
-    <button class="feedback-btn" type="primary" data-is-show="1" bindtap="changeFeedbackModal">意见反馈</button>
-  </view>
-  <view class="modal" wx:if="{{isShowModal}}" data-is-show="0" bindtap="changeFeedbackModal">
-    <view class="form">
-      <textarea class="suggest" data-name="suggest" bindinput="bindValueInput" placeholder="说点什么吧" auto-focus />
-      <input class="contact" data-name="contact" bindinput="bindValueInput" placeholder="联系方式" />
-      <button class="submit-btn" catchtap="submitFeedback">提交</button>
-    </view>
-  </view>
+  <component-feedback></component-feedback>
 </view>
