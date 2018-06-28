@@ -34,6 +34,7 @@ Page({
 
   // 获取搜索结果
   getSongList: function () {
+    wx.showLoading()
     let self = this
     wx.getStorage({
       key: 'historySearch',
@@ -67,6 +68,7 @@ Page({
           songList: res.data.data,
           isRequested: true
         })
+        wx.hideLoading()
       }
     })
   },
