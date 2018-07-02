@@ -4,8 +4,8 @@
 </view>
 <view class="modal" wx:if="{{isShowModal}}" data-is-show="0" bindtap="changeFeedbackModal">
   <view class="form">
-    <textarea class="suggest" data-name="suggest" bindinput="bindValueInput" placeholder="说点什么吧" auto-focus />
-    <input class="contact" data-name="contact" bindinput="bindValueInput" placeholder="联系方式" />
-    <button class="submit-btn" catchtap="submitFeedback">提交</button>
+    <textarea class="suggest" data-name="suggest" bindinput="bindValueInput" placeholder="说点什么吧" adjust-position />
+    <input class="contact" data-name="contact" bindinput="bindValueInput" placeholder="联系方式" adjust-position />
+    <button type="primary" class="submit-btn" catchtap="submitFeedback">提交</button>
   </view>
 </view>
