@@ -3,12 +3,32 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/detail/detail",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/member/member"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "粤语歌曲谐音",
     "navigationBarTextStyle": "#fff"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#fce13d",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "搜索",
+        "iconPath": "images/search.png",
+        "selectedIconPath": "images/search-selected.png"
+      },
+      {
+        "pagePath": "pages/member/member",
+        "text": "我的",
+        "iconPath": "images/member.png",
+        "selectedIconPath": "images/member-selected.png"
+      }
+    ]
   }
 }

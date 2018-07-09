@@ -28,7 +28,7 @@
   border-top-left-radius: 0px;
   font-size: 14px;
   color: #000;
-  background-color: #ffd200;
+  background-color: #fce13d;
 }
 .search .search-btn::after { 
   border: none; 

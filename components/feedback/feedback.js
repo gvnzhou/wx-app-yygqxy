@@ -32,7 +32,7 @@ Component({
         return
       }
       let _this = this
-      let reqUrl = app.globalData.serverUrl + '/feedback'
+      let reqUrl = app.globalData.serverUrl + '/user/feedback'
       let data = {
         contact: this.data.contact,
         suggest: this.data.suggest
