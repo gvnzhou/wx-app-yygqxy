@@ -41,7 +41,8 @@
 				{
 					"id": -1,
 					"name": "我的",
-					"pathName": "pages/member/member"
+					"pathName": "pages/member/member",
+					"query": ""
 				}
 			]
 		}

@@ -20,5 +20,5 @@
       </view>
     </navigator>
   </view>
-  <component-feedback></component-feedback>
+  <button class="feedback-btn" type="primary" open-type="feedback">反馈</button>
 </view>
