@@ -6,6 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isAuth: false,
+    userInfo: null,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
@@ -13,22 +15,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.login({
-      success: function (res) {
-        console.log(res)
-        if (res.code) {
-          //发起网络请求
-          wx.request({
-            url: app.globalData.serverUrl + "/user/login",
-            data: {
-              code: res.code
-            }
-          })
-        } else {
-          console.log('登录失败！' + res.errMsg)
-        }
-      }
-    });
+    // 查看是否授权
+    this.isUserAuth()
   },
 
   /**
@@ -80,7 +68,59 @@ Page({
   
   },
 
+  loginUser: function (userInfo) {
+    wx.login({
+      success: function (res) {
+        if (res.code) {
+          //发起网络请求
+          wx.request({
+            url: app.globalData.serverUrl + "/user/login",
+            method: 'POST',
+            data: {
+              code: res.code,
+              userInfo: userInfo
+            },
+            success: function (res) {
+              console.log(res.data)
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    });
+  },
+
+  isUserAuth: function () {
+    let _this = this
+    // 查看是否授权
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function (res) {
+              _this.setData({
+                isAuth: true,
+                userInfo: res.userInfo
+              })
+              _this.loginUser(res.userInfo)
+            }
+          })
+        } else {
+          _this.setData({
+            isAuth: false
+          })
+        }
+      }
+    })
+  },
+
   bindGetUserInfo: function (e) {
-    console.log(e.detail.userInfo)
+    this.setData({
+      isAuth: true,
+      userInfo: e.detail.userInfo
+    })
+    this.loginUser(e.detail.userInfo)
   }
 })

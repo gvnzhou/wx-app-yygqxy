@@ -59,3 +59,17 @@
 .modal .form .contact {
   padding: 5px 10px;
 }
+.feedback-btn {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 12px;
+  padding: 0;
+}

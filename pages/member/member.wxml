@@ -1,14 +1,19 @@
 <!--pages/member/member.wxml-->
-<view class="header">
-  <!-- 如果只是展示用户头像昵称，可以使用 <open-data /> 组件 -->
-  <open-data type="userAvatarUrl" class="avatar"></open-data>
-  <open-data type="userNickName" class="nickname"></open-data>
-  <!-- 需要使用 button 来授权登录 -->
-  <!-- <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录  </button>
-  <view wx:else>请升级微信版本</view> -->
+<view wx:if="{{isAuth}}">
+  <view class="header">
+    <!-- 如果只是展示用户头像昵称，可以使用 <open-data /> 组件 -->
+    <open-data type="userAvatarUrl" class="avatar"></open-data>
+    <open-data type="userNickName" class="nickname"></open-data>
+  </view>
+  <view class="content">
+    <text class="title">收藏</text>
+  </view>
 </view>
-<view class="content">
-  <text class="title">收藏</text>
-  <text class="title">反馈</text>
+
+<view class="auth" wx:else>
+  <!-- 需要使用 button 来授权登录 -->
+  <button wx:if="{{canIUse}}" type="primary" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" style="width: 200px">授权登录</button>
+  <view wx:else>请升级微信版本</view>  
+  <text class="tips">登录后可以使用收藏功能哦</text>  
 </view>
 

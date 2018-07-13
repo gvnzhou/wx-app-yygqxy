@@ -9,7 +9,7 @@ Page({
    */
   data: {
     keyword: '',
-    historySearch: ['喜帖街','红玫瑰','浮夸'],
+    historySearch: [],
     songList: [],
     isRequested: false
   },
