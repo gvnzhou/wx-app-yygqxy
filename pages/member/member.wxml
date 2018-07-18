@@ -10,10 +10,9 @@
   </view>
 </view>
 
-<view class="auth" wx:else>
-  <!-- 需要使用 button 来授权登录 -->
+ <view class="auth" wx:else>
   <button wx:if="{{canIUse}}" type="primary" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" style="width: 200px">授权登录</button>
   <view wx:else>请升级微信版本</view>  
   <text class="tips">登录后可以使用收藏功能哦</text>  
-</view>
+</view> 
 
