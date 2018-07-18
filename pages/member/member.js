@@ -15,8 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 查看是否授权
-    this.isUserAuth()
+    this.isAuthUserInfo()
   },
 
   /**
@@ -68,7 +67,12 @@ Page({
   
   },
 
-  loginUser: function (userInfo) {
+  getUserCollection: function () {
+
+  },
+
+  login: function () {
+    let _this = this
     wx.login({
       success: function (res) {
         if (res.code) {
@@ -78,20 +82,46 @@ Page({
             method: 'POST',
             data: {
               code: res.code,
-              userInfo: userInfo
+              userInfo: _this.data.userInfo
             },
             success: function (res) {
-              console.log(res.data)
+              wx.setStorage({
+                key: 'third_session',
+                data: res.data.thirdSession
+              })
+              _this.getUserCollection()
             }
           })
         } else {
-          console.log('登录失败！' + res.errMsg)
+          wx.showToast({
+            title: '登录失败！' + res.errMsg,
+            icon: 'none',
+            duration: 2000
+          })
         }
       }
     });
   },
 
-  isUserAuth: function () {
+  // 判断是否登录
+  isLogin: function () {
+    let _this = this
+    // 查看登录态是否过期
+    wx.checkSession({
+      success: function () {
+        // 登录态未过期，可进行我们所需要的业务
+        _this.getUserCollection()
+        console.log('登录态未过期')
+      },
+      fail: function () {
+        _this.login() // 登录态已过期，需重新登录
+        console.log('登录态已过期')
+      }
+    })
+  },
+
+  // 判断是否授权
+  isAuthUserInfo: function () {
     let _this = this
     // 查看是否授权
     wx.getSetting({
@@ -104,7 +134,7 @@ Page({
                 isAuth: true,
                 userInfo: res.userInfo
               })
-              _this.loginUser(res.userInfo)
+              _this.isLogin()
             }
           })
         } else {
@@ -121,6 +151,6 @@ Page({
       isAuth: true,
       userInfo: e.detail.userInfo
     })
-    this.loginUser(e.detail.userInfo)
+    this.isLogin()
   }
 })
