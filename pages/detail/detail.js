@@ -7,64 +7,159 @@ Page({
    * 页面的初始数据
    */
   data: {
-    songDetail: {}
+    songDetail: {},
+    isCollect: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad (options) {
+    this.setData({
+      songId: options.id
+    })
     // 获取详情
     this.getSongDetail(options.id)
+
+    this.isCollected(options.id)
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  isCollected: function (id) {
+    try {
+      let songCollections = wx.getStorageSync('song_collections')
+      if (songCollections) {
+        if (songCollections.map(item => item._id).indexOf(id) > -1) {
+          this.setData({
+            isCollect: true
+          })
+        } else {
+          this.setData({
+            isCollect: false
+          })
+        }
+      }
+    } catch (e) {
+      wx.showToast({
+        title: e,
+        icon: 'none',
+        duration: 2000
+      })
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+  // 取消收藏
+  deleteCollection: function (e) {
+    let _this = this
+    wx.request({
+      url: app.globalData.serverUrl + '/user/deleteCollection',
+      header: {
+        'third-session': wx.getStorageSync('third_session')
+      },
+      method: 'POST',
+      data: {
+        id: _this.data.songId
+      },
+      success: function (res) {
+        if (res.data.code === 200) {
+          // 删除本地相关缓存数据
+          try {
+            let localSongData = wx.getStorageSync('song_collections')
+            localSongData.splice(localSongData.indexOf(_this.data.songId), 1)
+            wx.setStorageSync('song_collections', localSongData)
+          } catch (e) {
+            wx.showToast({
+              title: e,
+              icon: 'none',
+              duration: 2000
+            })
+          }
+          
+          _this.setData({
+            isCollect: false
+          })
+          wx.showToast({
+            title: '取消收藏成功',
+            icon: 'none',
+            duration: 2000
+          })
+        } else {
+          wx.showToast({
+            title: res.data.error,
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    }, function (error) {
+      wx.showToast({
+        title: error,
+        icon: 'none',
+        duration: 2000
+      })
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  addCollection: function (e) {
+    let _this = this
+    // 判断用户是否授权登录
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，收藏歌曲，并且本地记录收藏信息
+          wx.request({
+            url: app.globalData.serverUrl + '/user/addCollection',
+            header: {
+              'third-session': wx.getStorageSync('third_session')
+            },
+            method: 'POST',
+            data: {
+              id: _this.data.songId
+            },
+            success: function (res) {
+              if (res.data.code === 200) {
+                // 添加收藏记录
+                try {
+                  let localSongData = wx.getStorageSync('song_collections')
+                  localSongData.push(_this.data.songDetail)
+                  wx.setStorageSync('song_collections', localSongData)
+                } catch (e) {
+                  wx.showToast({
+                    title: e,
+                    icon: 'none',
+                    duration: 2000
+                  })
+                }
+                _this.setData({
+                  isCollect: true
+                })
+                wx.showToast({
+                  title: '收藏成功',
+                  icon: 'none',
+                  duration: 2000
+                })
+              } else {
+                wx.showToast({
+                  title: res.data.error,
+                  icon: 'none',
+                  duration: 2000
+                })
+              }
+            }
+          }, function (error) {
+            wx.showToast({
+              title: error,
+              icon: 'none',
+              duration: 2000
+            })
+          })
+        } else {
+          // 跳转登录页
+          wx.switchTab({
+            url: '/pages/member/member'
+          })
+        }
+      }
+    })
   },
 
   getSongDetail: function (id) {

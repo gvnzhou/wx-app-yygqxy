@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <view class="search" bindtap="goSearchPage" >
-    <input class="search-input" placeholder="支持歌曲、歌手名搜索" />
+    <input class="search-input" placeholder="支持歌曲、歌手名搜索"/>
     <button class="search-btn">搜索</button>
     <!-- <view>
       搜索提示框

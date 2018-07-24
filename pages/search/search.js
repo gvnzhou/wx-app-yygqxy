@@ -1,5 +1,5 @@
 // pages/search/search.js
-const util = require('../../utils/util.js')
+const { bindValueInput } = require('../../utils/util.js')
 //获取应用实例
 const app = getApp()
 Page({
@@ -30,7 +30,7 @@ Page({
   },
 
   // input数据绑定
-  bindValueInput: util.bindValueInput,
+  bindValueInput: bindValueInput,
 
   // 获取搜索结果
   getSongList: function () {
