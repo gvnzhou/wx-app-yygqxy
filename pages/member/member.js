@@ -7,8 +7,9 @@ Page({
    */
   data: {
     isAuth: false,
-    userInfo: null,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    userInfo: {},
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    collectionsData: []
   },
 
   /**
@@ -19,56 +20,46 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  onShow: function () {
+    this.getUserCollection()
   },
 
   getUserCollection: function () {
-
+    let _this = this
+    // 获取收藏记录并同步到本地
+    wx.request({
+      url: app.globalData.serverUrl + "/user/getCollections",
+      method: 'GET',
+      header: {
+        'third-session': wx.getStorageSync('third_session')
+      },
+      success: function (res) {
+       // 存入本地缓存
+       if (res.data.code === 200) {
+         try {
+           wx.setStorageSync('song_collections', res.data.data)
+           _this.setData({
+             collectionsData: wx.getStorageSync('song_collections')
+           })
+         } catch (e) {
+           wx.showToast({
+             title: e,
+             icon: 'none',
+             duration: 2000
+           })
+         }
+       } else {
+         wx.showToast({
+           title: res.data.error,
+           icon: 'none',
+           duration: 2000
+         })
+       }
+        
+      }
+    })
   },
 
   login: function () {
@@ -85,10 +76,16 @@ Page({
               userInfo: _this.data.userInfo
             },
             success: function (res) {
-              wx.setStorage({
-                key: 'third_session',
-                data: res.data.thirdSession
-              })
+              // 存入本地缓存
+              try {
+                wx.setStorageSync('third_session', res.data.thirdSession)
+              } catch (e) {
+                wx.showToast({
+                  title: e,
+                  icon: 'none',
+                  duration: 2000
+                })
+              }
               _this.getUserCollection()
             }
           })

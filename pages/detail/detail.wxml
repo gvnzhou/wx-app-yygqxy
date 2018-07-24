@@ -4,7 +4,11 @@
     <text>{{songDetail.name}}</text>  
   </view>
   <view class="singer">
-    <text>歌手：{{songDetail.singer}}</text>  
+    <text>歌手：{{songDetail.singer}}</text>
+  </view>
+  <view style="margin-top: 10px">
+    <button type="primary" size="mini" bindtap="deleteCollection" wx:if="{{ isCollect }}">已收藏</button>
+    <button type="primary" size="mini" bindtap="addCollection" wx:else>收藏</button>
   </view>
   <view class="content">
     <text>{{songDetail.content}}</text>
