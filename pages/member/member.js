@@ -23,7 +23,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onShow: function () {
-    this.getUserCollection()
+    this.data.isAuth && this.getUserCollection()
   },
 
   getUserCollection: function () {
